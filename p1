@@ -1,0 +1,536 @@
+<?php 
+$name=$_POST["name"];
+$link = mysqli_connect('localhost', 'root', 'password','yat');
+if (!$link) {
+    die('Could not connect: ' . mysql_error());
+}
+echo 'Connected successfully';
+$q1="select mypspace,password from yat1 where name='$name'";
+
+$result = mysqli_query($link,$q1);
+$row=mysqli_fetch_assoc($result);
+ if(!$row)
+{
+echo "wrong uname  \n".$name;
+echo "Bye";
+}
+$password=$row['password'];
+$as=$row['mypspace'];
+
+mysqli_close($link);
+
+$a=str_split($as);
+
+shuffle($a);
+
+$mystr="";
+
+$pwdarray=str_split($password);
+
+echo $pwdarray;
+for($i=0;$i<count($pwdarray);$i++)
+   {
+	$key = array_search($pwdarray[$i], $a); 
+	$key=($key/8);
+	$key=floor($key);
+	$mystr=$mystr.$key;
+   }
+
+echo '<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>
+login
+</title>
+<script type="text/javascript">';
+
+echo 'window.onload = function() {
+
+
+  var canvas = document.getElementById("canvas");  
+//1
+  var context = canvas.getContext("2d");
+context.strokeStyle = "black";
+context.fillStyle = "red";
+context.lineWidth = 5;
+context.beginPath();
+context.lineTo(248+10,248+10);
+context.lineTo(248+10,10);
+context.lineTo(74+10,74+10);  
+context.closePath();
+context.stroke();
+context.fill();
+
+//2 
+var context1 = canvas.getContext("2d");
+context1.strokeStyle = "black";
+context1.fillStyle = "pink";
+context1.lineWidth = 5;
+context1.beginPath();
+context1.lineTo(248+10,248+10);
+context1.lineTo(74+10,74+10);
+context1.lineTo(10,248+10);  
+context1.closePath();
+context1.stroke();
+context1.fill();
+
+//3
+  var context = canvas.getContext("2d");
+context.strokeStyle = "black";
+context.fillStyle = "orange";
+context.lineWidth = 5;
+context.beginPath();
+context.lineTo(248+10,248+10);
+context.lineTo(10,248+10);
+context.lineTo(74+10,421+10);  
+context.closePath();
+context.stroke();
+context.fill();
+
+//4
+var context1 = canvas.getContext("2d");
+context1.strokeStyle = "black";
+context1.fillStyle = "yellow";
+context1.lineWidth = 5;
+context1.beginPath();
+context1.lineTo(248+10,248+10);
+context1.lineTo(74+10,421+10);
+context1.lineTo(248+10,496+10);  
+context1.closePath();
+context1.stroke();
+context1.fill();
+
+//5
+var context = canvas.getContext("2d");
+context.strokeStyle = "black";
+context.fillStyle = "green";
+context.lineWidth = 5;
+context.beginPath();
+context.lineTo(248+10,248+10);
+context.lineTo(258,506);
+context.lineTo(431,431);  
+context.closePath();
+context.stroke();
+context.fill();
+
+//6
+var context1 = canvas.getContext("2d");
+context1.strokeStyle = "black";
+context1.fillStyle = "skyblue";
+context1.lineWidth = 5;
+context1.beginPath();
+context1.lineTo(248+10,248+10);
+context1.lineTo(421+10,421+10);
+context1.lineTo(496+10,248+10);  
+context1.closePath();
+context1.stroke();
+context1.fill();
+
+//7
+  var context = canvas.getContext("2d");
+context.strokeStyle = "black";
+context.fillStyle = "violet";
+context.lineWidth = 5;
+context.beginPath();
+context.lineTo(248+10,248+10);
+context.lineTo(496+10,248+10);
+context.lineTo(421+10,74+10);  
+context.closePath();
+context.stroke();
+context.fill();
+
+//8
+var context1 = canvas.getContext("2d");
+context1.strokeStyle = "black";
+context1.fillStyle = "brown";
+context1.lineWidth = 5;
+context1.beginPath();
+context1.lineTo(248+10,248+10);
+context1.lineTo(421+10,74+10);
+context1.lineTo(248+10,10);  
+context1.closePath();
+context1.stroke();
+context1.fill();
+
+var canvas = document.getElementById("canvas"); 
+var context = canvas.getContext("2d");
+   context.beginPath();
+   context.fillStyle = "rgba(0,0,0,1)";
+   context.arc(258,258,10,0,Math.PI*2,true);
+   context.fill();
+
+//context.font = "normal 100  35pt san-serif";
+           context.font = "italic 30pt Calibri";
+           context.lineWidth = 2;
+      // stroke color
+      context.strokeStyle = "rgb(0,0,0)";';
+           
+    echo ' context.strokeText("'.$a[0].'",125,110);
+	   context.strokeText("'.$a[1].'",165,95);
+	   context.strokeText("'.$a[2].'",210,80)
+           context.strokeText("'.$a[3].'",160,144);
+	   context.strokeText("'.$a[4].'",195,134);
+	   context.strokeText("'.$a[5].'",220,160);
+           context.strokeText("'.$a[6].'",190,180);
+	   context.strokeText("'.$a[7].'",210,205);
+
+	context.strokeText("'.$a[8].'",270,70);
+	context.strokeText("'.$a[9].'",315,85);
+	context.strokeText("'.$a[10].'",360,100);
+	context.strokeText("'.$a[11].'",270,124);
+	context.strokeText("'.$a[12].'",315,135);
+	context.strokeText("'.$a[13].'",270,175);
+	context.strokeText("'.$a[14].'",310,180);
+	context.strokeText("'.$a[15].'",270,205);
+	
+	context.strokeText("'.$a[16].'",320,250);
+	context.strokeText("'.$a[17].'",355,250);
+	context.strokeText("'.$a[18].'",390,250);
+	context.strokeText("'.$a[19].'",425,250);
+	context.strokeText("'.$a[20].'",350,210);
+	context.strokeText("'.$a[21].'",385,210);
+	context.strokeText("'.$a[22].'",420,210);
+	context.strokeText("'.$a[23].'",390,170);
+
+        context.strokeText("'.$a[24].'",320,300);
+	context.strokeText("'.$a[25].'",355,300);
+	context.strokeText("'.$a[26].'",390,300);
+	context.strokeText("'.$a[27].'",425,300);
+	context.strokeText("'.$a[28].'",355,335);
+	context.strokeText("'.$a[29].'",390,335);
+	context.strokeText("'.$a[30].'",425,335);
+	context.strokeText("'.$a[31].'",400,380);
+
+    	context.strokeText("'.$a[32].'",270,430);
+	context.strokeText("'.$a[33].'",295,430);
+	context.strokeText("'.$a[34].'",340,430);
+	context.strokeText("'.$a[35].'",375,430);
+	context.strokeText("'.$a[36].'",280,390);
+	context.strokeText("'.$a[37].'",315,390);
+	context.strokeText("'.$a[38].'",350,390);
+	context.strokeText("'.$a[39].'",290,350);
+ 	
+        context.strokeText("'.$a[40].'",120,430);
+	context.strokeText("'.$a[41].'",155,430);
+	context.strokeText("'.$a[42].'",180,430);
+	context.strokeText("'.$a[43].'",215,430);
+	context.strokeText("'.$a[44].'",155,390);
+	context.strokeText("'.$a[45].'",190,390);
+	context.strokeText("'.$a[46].'",225,390);
+	context.strokeText("'.$a[47].'",210,350);	
+	
+
+	context.strokeText("'.$a[48].'",60,300);
+	context.strokeText("'.$a[49].'",95,300);
+	context.strokeText("'.$a[50].'",130,300);
+	context.strokeText("'.$a[51].'",165,300);
+	context.strokeText("'.$a[52].'",85,335);
+	context.strokeText("'.$a[53].'",125,335);
+	context.strokeText("'.$a[54].'",155,335);
+	context.strokeText("'.$a[55].'",100,380);
+
+	context.strokeText("'.$a[56].'",50,250);
+	context.strokeText("'.$a[57].'",95,250);
+	context.strokeText("'.$a[58].'",140,250);
+	context.strokeText("'.$a[59].'",185,250);
+	context.strokeText("'.$a[60].'",70,210);
+	context.strokeText("'.$a[61].'",120,210);
+	context.strokeText("'.$a[62].'",155,210);
+	context.strokeText("'.$a[63].'",100,170);
+   
+}
+</script>
+</head>
+<body>
+<center>
+<script type="text/javascript">
+
+var i=0;
+var pwdn="";
+function rotateitR() 
+{
+
+ i++;
+i=i%8;
+ clearit();
+ drawit();
+stamp(); 
+}
+
+function rotateitL() 
+{
+
+ i--;
+i=i%8;
+if(i==-1)
+ i=7;
+ clearit();
+ drawit(); 
+stamp();
+}
+
+function clearit() {
+var canvas = document.getElementById("canvas"); 
+var context = canvas.getContext("2d");
+   context.beginPath();
+   context.fillStyle = "rgba(255,255,255,1)";
+   context.arc(258,258,248,0,Math.PI*2,true);
+   context.fill();
+
+
+}
+
+function stamp() {
+var canvas = document.getElementById("canvas"); 
+var context = canvas.getContext("2d");
+   context.beginPath();
+   context.fillStyle = "rgba(0,0,0,1)";
+   context.arc(258,258,10,0,Math.PI*2,true);
+   context.fill();
+
+
+}
+
+
+function drawit() {
+ var myaary=new Array(8);
+ myaary[0]="red";
+ myaary[1]="pink";
+ myaary[2]="orange";
+ myaary[3]="yellow";
+ myaary[4]="green";
+ myaary[5]="skyblue";
+ myaary[6]="violet";
+ myaary[7]="brown";
+
+
+var canvas = document.getElementById("canvas");  
+//1
+  var context = canvas.getContext("2d");
+context.strokeStyle = "black";
+var k=(i+0)%8;
+context.fillStyle = myaary[k];
+context.lineWidth = 5;
+context.beginPath();
+context.lineTo(248+10,248+10);
+context.lineTo(248+10,10);
+context.lineTo(74+10,74+10);  
+context.closePath();
+context.stroke();
+context.fill();
+
+//2 
+var context1 = canvas.getContext("2d");
+context.strokeStyle = "black";
+var k=(i+1)%8;
+context.fillStyle = myaary[k];
+
+context1.lineWidth = 5;
+context1.beginPath();
+context1.lineTo(248+10,248+10);
+context1.lineTo(74+10,74+10);
+context1.lineTo(10,248+10);  
+context1.closePath();
+context1.stroke();
+context1.fill();
+
+//3
+  var context = canvas.getContext("2d");
+context.strokeStyle = "black";
+var k=(i+2)%8;
+context.fillStyle = myaary[k];
+context.lineWidth = 5;
+context.beginPath();
+context.lineTo(248+10,248+10);
+context.lineTo(10,248+10);
+context.lineTo(74+10,421+10);  
+context.closePath();
+context.stroke();
+context.fill();
+
+//4
+var context1 = canvas.getContext("2d");
+context.strokeStyle = "black";
+var k=(i+3)%8;
+context.fillStyle = myaary[k];
+context1.lineWidth = 5;
+context1.beginPath();
+context1.lineTo(248+10,248+10);
+context1.lineTo(74+10,421+10);
+context1.lineTo(248+10,496+10);  
+context1.closePath();
+context1.stroke();
+context1.fill();
+
+//5
+var context = canvas.getContext("2d");
+context.strokeStyle = "black";
+var k=(i+4)%8;
+context.fillStyle = myaary[k];
+context.lineWidth = 5;
+context.beginPath();
+context.lineTo(248+10,248+10);
+context.lineTo(258,506);
+context.lineTo(431,431);  
+context.closePath();
+context.stroke();
+context.fill();
+
+//6
+var context1 = canvas.getContext("2d");
+context.strokeStyle = "black";
+var k=(i+5)%8;
+context.fillStyle = myaary[k];
+context1.lineWidth = 5;
+context1.beginPath();
+context1.lineTo(248+10,248+10);
+context1.lineTo(421+10,421+10);
+context1.lineTo(496+10,248+10);  
+context1.closePath();
+context1.stroke();
+context1.fill();
+
+//7
+  var context = canvas.getContext("2d");
+context.strokeStyle = "black";
+var k=(i+6)%8;
+context.fillStyle = myaary[k];
+context.lineWidth = 5;
+context.beginPath();
+context.lineTo(248+10,248+10);
+context.lineTo(496+10,248+10);
+context.lineTo(421+10,74+10);  
+context.closePath();
+context.stroke();
+context.fill();
+
+//8
+var context1 = canvas.getContext("2d");
+context.strokeStyle = "black";
+var k=(i+7)%8;
+context.fillStyle = myaary[k];
+context1.lineWidth = 5;
+context1.beginPath();
+context1.lineTo(248+10,248+10);
+context1.lineTo(421+10,74+10);
+context1.lineTo(248+10,10);  
+context1.closePath();
+context1.stroke();
+context1.fill();
+context.font = "italic 30pt Calibri";
+           context.lineWidth = 2;
+      // stroke color
+      context.strokeStyle = "rgb(0,0,0)";'
+;
+
+echo 'context.strokeText("'.$a[0].'",125,110);
+	   context.strokeText("'.$a[1].'",165,95);
+	   context.strokeText("'.$a[2].'",210,80)
+           context.strokeText("'.$a[3].'",160,144);
+	   context.strokeText("'.$a[4].'",195,134);
+	   context.strokeText("'.$a[5].'",220,160);
+           context.strokeText("'.$a[6].'",190,180);
+	   context.strokeText("'.$a[7].'",210,205);
+
+	context.strokeText("'.$a[8].'",270,70);
+	context.strokeText("'.$a[9].'",315,85);
+	context.strokeText("'.$a[10].'",360,100);
+	context.strokeText("'.$a[11].'",270,124);
+	context.strokeText("'.$a[12].'",315,135);
+	context.strokeText("'.$a[13].'",270,175);
+	context.strokeText("'.$a[14].'",310,180);
+	context.strokeText("'.$a[15].'",270,205);
+	
+	context.strokeText("'.$a[16].'",320,250);
+	context.strokeText("'.$a[17].'",355,250);
+	context.strokeText("'.$a[18].'",390,250);
+	context.strokeText("'.$a[19].'",425,250);
+	context.strokeText("'.$a[20].'",350,210);
+	context.strokeText("'.$a[21].'",385,210);
+	context.strokeText("'.$a[22].'",420,210);
+	context.strokeText("'.$a[23].'",390,170);
+
+        context.strokeText("'.$a[24].'",320,300);
+	context.strokeText("'.$a[25].'",355,300);
+	context.strokeText("'.$a[26].'",390,300);
+	context.strokeText("'.$a[27].'",425,300);
+	context.strokeText("'.$a[28].'",355,335);
+	context.strokeText("'.$a[29].'",390,335);
+	context.strokeText("'.$a[30].'",425,335);
+	context.strokeText("'.$a[31].'",400,380);
+
+    	context.strokeText("'.$a[32].'",270,430);
+	context.strokeText("'.$a[33].'",295,430);
+	context.strokeText("'.$a[34].'",340,430);
+	context.strokeText("'.$a[35].'",375,430);
+	context.strokeText("'.$a[36].'",280,390);
+	context.strokeText("'.$a[37].'",315,390);
+	context.strokeText("'.$a[38].'",350,390);
+	context.strokeText("'.$a[39].'",290,350);
+ 	
+        context.strokeText("'.$a[40].'",120,430);
+	context.strokeText("'.$a[41].'",155,430);
+	context.strokeText("'.$a[42].'",180,430);
+	context.strokeText("'.$a[43].'",215,430);
+	context.strokeText("'.$a[44].'",155,390);
+	context.strokeText("'.$a[45].'",190,390);
+	context.strokeText("'.$a[46].'",225,390);
+	context.strokeText("'.$a[47].'",210,350);	
+	
+
+	context.strokeText("'.$a[48].'",60,300);
+	context.strokeText("'.$a[49].'",95,300);
+	context.strokeText("'.$a[50].'",130,300);
+	context.strokeText("'.$a[51].'",165,300);
+	context.strokeText("'.$a[52].'",85,335);
+	context.strokeText("'.$a[53].'",125,335);
+	context.strokeText("'.$a[54].'",155,335);
+	context.strokeText("'.$a[55].'",100,380);
+
+	context.strokeText("'.$a[56].'",50,250);
+	context.strokeText("'.$a[57].'",95,250);
+	context.strokeText("'.$a[58].'",140,250);
+	context.strokeText("'.$a[59].'",185,250);
+	context.strokeText("'.$a[60].'",70,210);
+	context.strokeText("'.$a[61].'",120,210);
+	context.strokeText("'.$a[62].'",155,210);
+	context.strokeText("'.$a[63].'",100,170);
+   
+
+
+}
+
+function charSelected() {
+
+pwdn=pwdn+i;
+
+}
+
+function passwordS() {
+
+if("'.$mystr.'"==pwdn)
+{
+  alert("AUTHEnticated:");
+}
+else alert("Not Authenticated!Sorry");
+
+
+}
+</script>
+<h1>
+Login
+</h1>
+<center><canvas id="canvas" width="550" height="550">
+  <strong>
+Canvas Supporting Browser Required
+</strong>
+</canvas></center>
+<input position="fixed" left="100" top="100" type="submit" value="rotateleft" onclick="return rotateitL();"/>
+<input position="fixed" left="100" top="100" type="submit" value="rotateright" onclick="return rotateitR();"/>
+<input position="fixed" left="100" top="100" type="submit" value="OK" onclick="charSelected();"/>
+<input position="fixed" left="100" top="100" type="submit" value="SUBMIT" onclick="passwordS();"/>
+
+</body>
+</html>';
+?>
